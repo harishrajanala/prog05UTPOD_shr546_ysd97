@@ -3,141 +3,146 @@
 #ifndef UTPOD_H
 #define UTPOD_H
 #include "Song.h"
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
 
 //UtPod class declaration
 class UtPod
 {
-    private:
-        static const int MAX_MEMORY = 512;
-        static const int SUCCESS = 0;
-        static const int NO_MEMORY = -1;
-        static const int NOT_FOUND = -2;
+   private:
+      static const int MAX_MEMORY = 512;
+      static const int SUCCESS = 0;
+      static const int NO_MEMORY = -1;
+      static const int NOT_FOUND = -2;
+      
+      struct SongNode
+      {
+         Song s;
+         SongNode *next;
+      };
+      
+      SongNode *songs;  //the head pointer
+      
+      int memSize;
+   
+   public:
+      //Default constructor
+      //set the memory size to MAX_MEMORY
+      UtPod();
 
-        struct SongNode
-        {
-            Song s;
-            SongNode *next;
-        };
+      //Constructor with size parameter
+      //The user of the class will pass in a size.
+      //If the size is greater than MAX_MEMORY or less than or equal to 0,
+      //set the size to MAX_MEMORY.
+      UtPod(int size);
 
-        SongNode *songs;  //the head pointer
+      /* FUNCTION - int addSong
+       * attempts to add a new song to the UtPod
+           o returns a 0 if successful
+           o returns -1 if not enough memory to add the song
 
-        int memSize;
+       precondition: s is a valid Song
 
-    public:
-        //Default constructor
-        //set the memory size to MAX_MEMORY
-        UtPod();
+       input parms -
 
-        //Constructor with size parameter
-        //The user of the class will pass in a size.
-        //If the size is greater than MAX_MEMORY or less than or equal to 0,
-        //set the size to MAX_MEMORY.
-        UtPod(int size);
+       output parms -
+      */
 
-        /* FUNCTION - int addSong
-         * attempts to add a new song to the UtPod
-             o returns a 0 if successful
-             o returns -1 if not enough memory to add the song
+      int addSong(Song const &s);
 
-         precondition: s is a valid Song
+
+      /* FUNCTION - int removeSong
+       * attempts to remove a song from the UtPod
+       * removes the first instance of a song that is in the the UtPod multiple times
+           o returns 0 if successful
+           o returns -1 if nothing is removed
+
 
          input parms -
 
          output parms -
-        */
+      */
 
-        int addSong(Song const &s);
-
-
-        /* FUNCTION - int removeSong
-         * attempts to remove a song from the UtPod
-         * removes the first instance of a song that is in the the UtPod multiple times
-             o returns 0 if successful
-             o returns -1 if nothing is removed
+      int removeSong(Song const &s);
 
 
-           input parms -
+      /* FUNCTION - void shuffle
+       *  shuffles the songs into random order
+          o will do nothing if there are less than two songs in the current list
 
-           output parms -
-        */
+         input parms -
 
-        int removeSong(Song const &s);
+         output parms -
+      */
 
+      void shuffle();
 
-        /* FUNCTION - void shuffle
-         *  shuffles the songs into random order
-            o will do nothing if there are less than two songs in the current list
+      int getSongCount();
 
-           input parms -
+      /* FUNCTION - void showSongList
+       * prints the current list of songs in order from first to last to standard output
+       * format - Title, Artist, size in MB (one song per line)
 
-           output parms -
-        */
+         input parms -
 
-        void shuffle();
+         output parms -
+      */
 
-
-        /* FUNCTION - void showSongList
-         * prints the current list of songs in order from first to last to standard output
-         * format - Title, Artist, size in MB (one song per line)
-
-           input parms -
-
-           output parms -
-        */
-
-        void showSongList();
+      void showSongList();
 
 
-        /* FUNCTION - void sortSongList
-         *  sorts the songs in ascending order
-            o will do nothing if there are less than two songs in the current list
+      /* FUNCTION - void sortSongList
+       *  sorts the songs in ascending order
+          o will do nothing if there are less than two songs in the current list
 
-           input parms -
+         input parms -
 
-           output parms -
-        */
+         output parms -
+      */
 
-        void sortSongList();
-
-
-        /* FUNCTION - void clearMemory
-         * clears all the songs from memory
-
-           input parms -
-
-           output parms -
-        */
-        void clearMemory();
+      void sortSongList();
 
 
-        /* FUNCTION - int getTotalMemory
-         *  returns the total amount of memory in the UtPod
-            o will do nothing if there are less than two songs in the current list
+      /* FUNCTION - void clearMemory
+       * clears all the songs from memory
 
-           input parms -
+         input parms -
 
-           output parms -
-        */
+         output parms -
+      */
+      void clearMemory();
 
-        int getTotalMemory() {
-            return memSize;
-        }
+
+      /* FUNCTION - int getTotalMemory
+       *  returns the total amount of memory in the UtPod
+          o will do nothing if there are less than two songs in the current list
+
+         input parms -
+
+         output parms -
+      */
+
+      int getTotalMemory() {
+         return memSize;
+      }
 
 
 
-        /* FUNCTION - int getRemainingMemory
-         *  returns the amount of memory available for adding new songs
+      /* FUNCTION - int getRemainingMemory
+       *  returns the amount of memory available for adding new songs
 
-           input parms -
+         input parms -
 
-           output parms -
-        */
+         output parms -
+      */
 
-        int getRemainingMemory();
+      int getRemainingMemory();
 
 
-        ~UtPod();
-
+      ~UtPod();
+ 
 };
 
 

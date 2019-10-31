@@ -1,38 +1,30 @@
-//
-// Created by yashd on 10/28/2019.
-//
+#ifndef SONG_H
+#define SONG_H
 
-#ifndef UTPOD_SONG_H
-#define UTPOD_SONG_H
+#include <iostream>
+#include <cstdlib>
 #include <string>
-
 using namespace std;
 
-class Song {
+class Song{
+
     private:
-        string artist;
-        string title;
-        int size;
-
+        string name;
+        string person;
+        int num;
+    
     public:
-        Song(string artist, string title, int size);
-
-        string getArtist() const;
+        Song();
+        Song(string artist,string title, int size);
         string getTitle() const;
+        string getArtist() const;
         int getSize() const;
-
-        void setArtist(string artist);
         void setTitle(string title);
+        void setArtist(string artist);
         void setSize(int size);
-
-        void swap(Song &s1, Song &s2);
-
-        bool operator <(Song const &rhs);
-        bool operator >(Song const &rhs);
-        bool operator ==(Song const &rhs);
-
-
+        bool operator == (Song const &rhs) const;
+        bool operator < (Song const &rhs) const;
+        bool operator > (Song const &rhs) const;
 };
 
-
-#endif //UTPOD_SONG_H
+#endif

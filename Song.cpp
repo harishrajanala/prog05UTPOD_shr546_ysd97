@@ -1,55 +1,91 @@
-//
-// Created by yashd on 10/28/2019.
-//
-
-#include "Song.h"
+#include "UtPod.h"
+#include <iostream>
 #include <string>
+#include <cstdlib>
+#include <stdint.h>
+#include "Song.h"
 using namespace std;
 
-    Song::Song(string artist, string title, int size){
-        this->artist=artist;
-        this->title=title;
-        this->size=size;
-    }
+Song::Song(){
+    num=0;
+    name="";
+    person="";
+}
 
-    string Song::getArtist() const { return artist; }
-    string Song::getTitle() const { return title; }
-    int Song::getSize() const { return size; }
+Song::Song(string artist, string title, int size){
 
-    void Song::setArtist(string artist) {
-        this->artist=artist;
-    }
-    void Song::setTitle(string title) {
-        this->title=title;
-    }
-    void Song::setSize(int size) {
-        this->size=size;
-    }
+    num=size;
+    name=title;
+    person=artist;
 
-    void Song::swap(Song &s1, Song  &s2) {
-        Song temp = s1;
-        s1 = s2;
-        s2 = temp;
-    }
+}
 
-    bool Song::operator <(Song const &rhs) {
-        if(artist == rhs.artist) {
-            if(title == rhs.title)
-                return size > rhs.size;
-            return title < rhs.title;
+
+//get modules
+string Song::getTitle() const{
+
+    return name;
+}
+
+string Song::getArtist() const{
+    return person;
+}
+
+int Song::getSize() const{
+
+    return num;
+}
+
+//set modules
+void Song::setTitle(string title){
+
+    name=title;   
+}
+
+void Song::setArtist(string artist){
+
+    person=artist;
+}
+void Song::setSize(int size){
+
+    num=size;
+}
+
+//operator modules
+bool Song::operator == (Song const &rhs) const{
+
+    if(rhs.name == name && rhs.num == num && rhs.person == person){
+        return true;
+    }
+    return false;
+}
+
+bool Song::operator<(Song const &rhs) const{
+
+
+        if(person == rhs.person){
+            if(name == rhs.name){
+                if(num < rhs.num){
+                    return true;
+                }
+                else return false;
+            }
+            else return name<rhs.name;
         }
-        return artist < rhs.artist;
-    }
-    bool Song::operator >(Song const &rhs) {
-        if(artist == rhs.artist) {
-            if(title == rhs.title)
-                return size > rhs.size;
-            return title > rhs.title;
+        else return person<rhs.person;
+}
+
+bool Song::operator>(Song const &rhs) const{
+
+
+        if(rhs.person == person){
+            if(rhs.name == name){
+                if(rhs.num < num){
+                    return true;
+                }
+                else return false;
+            }
+            else return name>rhs.name;
         }
-        return artist > rhs.artist;
-    }
-    bool Song::operator ==(Song const &rhs) {
-        return (artist == rhs.artist &&
-                title == rhs.title &&
-                size == rhs.size);
-    }
+        else return person>rhs.person;
+}
