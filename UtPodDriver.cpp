@@ -20,6 +20,8 @@ int main(int argc, char *argv[])
 {
     UtPod t;
     
+    t.showSongList();
+    
     Song s1("Beatles", "Hey Jude1", 4);
     int result=t.addSong(s1);
     
@@ -83,43 +85,55 @@ int main(int argc, char *argv[])
 
     t.clearMemory();
 
+    UtPod t2(400);
+
+    result=t2.removeSong(s5);
+    cout<<"remove when nothing in Pod = "<<result<<endl;
+
     Song dontPlay("Travis Scott", "Don't Play", 4);
-    result = t.addSong(dontPlay);
+    result = t2.addSong(dontPlay);
     cout << "add Don't Play result = " << result << endl;
 
     Song motPatch("Huncho Jack", "Motorcycle Patches", 3);
-    result = t.addSong(motPatch);
+    result = t2.addSong(motPatch);
     cout << "add Motorcycle Patches result = " << result << endl;
 
     Song darkKnight("Trippie Redd", "Dark Knight Dummo", 4);
-    result = t.addSong(darkKnight);
+    result = t2.addSong(darkKnight);
     cout << "add Dark Knight Dummo result = " << result << endl;
 
     Song dangWorld("Mustard", "Dangerous World", 2);
-    result = t.addSong(dangWorld);
+    result = t2.addSong(dangWorld);
     cout << "add Dangerous World result = " << result << endl;
 
     Song notNet("Travis Scott", "Nothing But Net", 3);
-    result = t.addSong(notNet);
+    result = t2.addSong(notNet);
     cout << "add Nothing But Net result = " << result << endl;
 
     Song modSlave("Huncho Jack", "Modern Slavery", 6);
-    t.addSong(modSlave);
+    t2.addSong(modSlave);
     cout<<endl;
-    t.showSongList();
+    t2.showSongList();
 
     Song swerve("A Boogie Wit da Hoodie", "Swervin", 3); 
-    result = t.addSong(swerve);
+    result = t2.addSong(swerve);
     cout<<"add Swervin result = "<<result<<endl;
-
-    result = t.getSongCount();
-    cout<<result<<" songs in pod."<<endl;
     
-    t.shuffle();
-    t.showSongList();
+    t2.shuffle();
+    t2.showSongList();
     cout<<endl;
-    t.sortSongList();
-    t.showSongList();
+    t2.sortSongList();
+    t2.showSongList();
+    cout<<endl;
+    cout<<t2.getRemainingMemory()<<endl;
+
+    Song cudi("Playboi Carti", "Kid cudi", 375);
+    result = t2.addSong(cudi);
+
+    cout<<"add cudi result = "<<result<<endl<<t2.getRemainingMemory()<<endl;
+
+    result = t2.addSong(s5);
+    cout<<result<<endl;
 
     return 0;
 }

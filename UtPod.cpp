@@ -1,9 +1,7 @@
 #include "UtPod.h"
 #include "Song.h"
 #include <cstdlib>
-#include <string.h>
 #include <stdint.h>
-#include <iostream>
 #include <ctime>
 #include <string>
 using namespace std;
@@ -258,6 +256,5 @@ using namespace std;
 
       UtPod::~UtPod(){
          clearMemory();
-         cout << "deconstructor UtPod called" << endl;
       }
  
