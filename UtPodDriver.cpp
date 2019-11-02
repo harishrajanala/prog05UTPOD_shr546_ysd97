@@ -1,3 +1,31 @@
+/* Student information for project:
+ *
+ * Replace <Harish Rajanala> with your name.
+ *
+ * On my honor, <Harish Rajanala>, this programming project is my own work
+ * and I have not provided this code to any other student.
+ *gdb
+ * Name: Sai Harish Rajanala
+ * email address: harishrajanala@utexas.edu 
+ * UTEID: shr546  
+ * Section 5 digit ID: 16035
+ *
+ */
+
+/* Student information for project:
+ *
+ * Replace <Yash Dhaduti> with your name.
+ *
+ * On my honor, <Yash Dhaduti>, this programming project is my own work
+ * and I have not provided this code to any other student.
+ *gdb
+ * Name: Yash Dhaduti
+ * email address: yashdhaduti@utexas.edu 
+ * UTEID: ysd97  
+ * Section 5 digit ID: 16040
+ *
+ */
+
 /* utPod_driver.cpp
 Demo Driver for the UtPod.
 
